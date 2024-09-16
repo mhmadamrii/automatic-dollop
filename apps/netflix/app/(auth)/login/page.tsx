@@ -7,12 +7,14 @@ import { Button } from "@repo/ui/components/ui/button";
 import { getServerSession } from "next-auth";
 import { authOptions } from "~/lib/utils/auth";
 import { redirect } from "next/navigation";
+import GithubSignInButton from "~/components/GithubSignInButton";
 
 export default async function Login() {
   const session = await getServerSession(authOptions);
+  console.log("session", session);
 
   if (session) {
-    return redirect("/home");
+    // return redirect("/home");
   }
 
   return (
@@ -44,8 +46,8 @@ export default async function Login() {
       </div>
 
       <div className="flex w-full justify-center items-center gap-x-3 mt-6">
-        {/* <GithubSignInButton />
-        <GoogleSignInButton /> */}
+        <GithubSignInButton />
+        {/* <GoogleSignInButton /> */}
       </div>
     </div>
   );

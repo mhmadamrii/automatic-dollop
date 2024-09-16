@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { authOptions } from "~/lib/utils/auth";
 
 export default async function RootLayout({
@@ -7,7 +8,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await getServerSession(authOptions);
-  console.log("session", session);
+  if (!session) {
+    return redirect("/login");
+  }
+
   return (
     <html lang="en">
       <body>{children}</body>

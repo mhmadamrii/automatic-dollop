@@ -1,11 +1,13 @@
-import { Button } from "@repo/ui/components/ui/button";
-import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "~/lib/utils/auth";
 
-export default function Page() {
-  return (
-    <main className="bg-blue-500">
-      <Button>Click me</Button>
-      <Link href="/seed">Seed</Link>
-    </main>
-  );
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return redirect("/login");
+  } else {
+    return redirect("/home");
+  }
 }

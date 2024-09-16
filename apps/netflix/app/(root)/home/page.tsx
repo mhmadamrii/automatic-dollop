@@ -1,9 +1,12 @@
-import Link from "next/link";
+import MovieVideo from "~/components/MovieVideo";
+import RecentlyAdded from "~/components/RecentlyAdded";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-20 px-4 sm:px-6 lg:px-8">
-      <Link href="/login">Login</Link>
-    </section>
+    <div className="p-5 lg:p-0">
+      <MovieVideo />
+      <h1 className="text-3xl font-bold ">Recently Added</h1>
+      <RecentlyAdded />
+    </div>
   );
 }
