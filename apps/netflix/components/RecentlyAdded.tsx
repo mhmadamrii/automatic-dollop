@@ -11,11 +11,11 @@ async function getData(userId: string) {
       id: true,
       overview: true,
       title: true,
-      // WatchLists: {
-      //   where: {
-      //     userId: userId,
-      //   },
-      // },
+      WatchLists: {
+        where: {
+          userId: userId,
+        },
+      },
       imageString: true,
       youtubeString: true,
       age: true,
@@ -59,7 +59,7 @@ export default async function RecentlyAdded() {
                 className="absolute w-full h-full -z-10 rounded-lg object-cover"
               />
 
-              {/* <MovieCard
+              <MovieCard
                 movieId={movie.id}
                 overview={movie.overview}
                 title={movie.title}
@@ -70,7 +70,7 @@ export default async function RecentlyAdded() {
                 age={movie.age}
                 time={movie.duration}
                 year={movie.release}
-              /> */}
+              />
             </div>
           </div>
         </div>

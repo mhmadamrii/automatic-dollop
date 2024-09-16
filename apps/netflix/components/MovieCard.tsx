@@ -13,7 +13,7 @@ interface iAppProps {
   overview: string;
   movieId: number;
   watchList: boolean;
-  wachtListId: string;
+  wachtListId: string | undefined;
   youtubeUrl: string;
   year: number;
   age: number;

@@ -1,7 +1,9 @@
 import Image from "next/image";
 import prisma from "~/lib/database/db";
-import MovieCard from "~/components/MovieCard";
-import { Button } from "@repo/ui/components/ui/button";
+
+import { MovieCard } from "~/components/MovieCard";
+import { authOptions } from "~/lib/utils/auth";
+import { getServerSession } from "next-auth";
 
 async function getData(userId: string) {
   const data = await prisma.watchList.findMany({
@@ -28,7 +30,7 @@ async function getData(userId: string) {
   return data;
 }
 
-export default async function Page() {
+export default async function WatchLists() {
   const session = await getServerSession(authOptions);
   const data = await getData(session?.user?.email as string);
 
@@ -80,7 +82,4 @@ export default async function Page() {
       </div>
     </>
   );
-}
-function getServerSession(authOptions: any) {
-  throw new Error("Function not implemented.");
 }
